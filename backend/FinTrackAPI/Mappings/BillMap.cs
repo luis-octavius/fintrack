@@ -14,12 +14,12 @@ namespace FinTrackAPI.Mappings
             Schema("fintrack");
             Table("bills");
 
-            Id(x => x.Id);
-            Map(x => x.Name).Length(50);
-            Map(x => x.Description).Length(50);
-            Map(x => x.Status).CustomType<NHibernate.Type.EnumStringType<BillStatus>>();
-            Map(x => x.ExpDate);
-            References(x => x.User);
+            Id(x => x.Id).Column("id");
+            Map(x => x.Name).Length(50).Column("name");
+            Map(x => x.Description).Length(50).Column("description");
+            Map(x => x.Status).CustomType<NHibernate.Type.EnumStringType<BillStatus>>().Column("bill_status");
+            Map(x => x.ExpDate).Column("exp_date");
+            References(x => x.User).Column("user_id");
         }
     }
 }

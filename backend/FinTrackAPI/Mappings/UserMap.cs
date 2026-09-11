@@ -12,10 +12,10 @@ namespace FinTrackAPI.Mappings
             Schema("fintrack");
             Table("users");
 
-            Id(x => x.Id);
-            Map(x => x.Name);
-            Map(x => x.Email);
-            Map(x => x.PasswordHash);
+            Id(x => x.Id).Column("id");
+            Map(x => x.Name).Column("name");
+            Map(x => x.Email).Column("email");
+            Map(x => x.PasswordHash).Column("password_hash");
         }
     }
 }
