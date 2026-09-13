@@ -1,0 +1,18 @@
+name: fintrack
+
+services:
+  db:
+    image: postgres:18
+    container_name: postgres-dev
+    restart: always 
+    ports: 
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    environment:
+      POSTGRES_DB: POSTGRES_FINTRACK
+      POSTGRES_PASSWORD: mysecret
+      POSTGRES_USER: postgres
+
+volumes:
+  postgres_data: 

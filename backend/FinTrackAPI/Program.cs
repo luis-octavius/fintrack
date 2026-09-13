@@ -1,3 +1,5 @@
+using FinTrackAPI.Config;
+
 namespace FinTrackAPI
 {
     public class Program
@@ -6,14 +8,16 @@ namespace FinTrackAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddControllers();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
-                app.UseExceptionHandler("/Home/Error");
             }
             app.UseRouting();
+            app.MapControllers();
 
             app.Run();
         }

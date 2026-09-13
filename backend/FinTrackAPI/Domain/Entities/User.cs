@@ -6,5 +6,6 @@
         public virtual string Name { get; set; }
         public virtual string Email { get; set; }
         public virtual string PasswordHash { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; } = new List<Bill>();
     }
 }
