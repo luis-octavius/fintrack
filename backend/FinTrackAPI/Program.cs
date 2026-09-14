@@ -1,4 +1,5 @@
-using FinTrackAPI.Config;
+using FinTrackAPI.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinTrackAPI
 {
@@ -9,6 +10,11 @@ namespace FinTrackAPI
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
+
+            builder.Services.AddDbContext<FinTrackDbContext>(options =>
+                options.UseNpgsql("Host=localhost;Port=5432;Database=POSTGRES_FINTRACK;Username=postgres;Password=mysecret",
+                npgsqlOptions => npgsqlOptions.MigrationsHistoryTable("__EFMigrationsHistory", "fintrack")
+            ));
 
             var app = builder.Build();
 
